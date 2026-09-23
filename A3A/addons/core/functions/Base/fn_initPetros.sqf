@@ -135,7 +135,23 @@ petros addMPEventHandler ["mpkilled",
         _hr = server getVariable "hr";
         _res = server getVariable "resourcesFIA";
         [-1*(round(_hr*0.9)), -1*(round(_res*0.9))] spawn A3A_fnc_resourcesFIA;
-        [] spawn A3A_fnc_petrosDeathMonitor;
+
+        // Leadership succession: advance to the next name in A3A_leaderNames.
+        // Once every name in the roster has fallen (last leader killed), end the
+        // campaign in defeat instead of spawning another replacement.
+        private _leaderNames = server getVariable ["A3A_leaderNames", ["Petros", "Cherar", "Fuser", "Shima", "el Fraile"]];
+        private _deathCount = (server getVariable ["A3A_leaderDeathCount", 0]) + 1;
+        server setVariable ["A3A_leaderDeathCount", _deathCount, true];
+
+        if (_deathCount >= count _leaderNames) then
+        {
+            isNil {["ended", true] call A3A_fnc_writebackSaveVar};
+            ["leadershipLoss", false, true] remoteExec ["BIS_fnc_endMission"];
+        }
+        else
+        {
+            [] spawn A3A_fnc_petrosDeathMonitor;
+        };
     }
     else
     {
