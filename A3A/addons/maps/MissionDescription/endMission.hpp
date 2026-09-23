@@ -124,3 +124,11 @@ class hardcoreLoss
 	picture = "A3AU_Hardcore_Loss";
 	pictureColor[] = {0.5,0.0,0.0,1};
 };
+class leadershipLoss
+{
+	title = $STR_end_mission_leadership_defeat_title;
+	subtitle = $STR_end_mission_leadership_defeat_subtitle;
+	description = $STR_end_mission_leadership_defeat_desc;
+	picture = "A3AU_Hardcore_Loss";
+	pictureColor[] = {0.5,0.0,0.0,1};
+};
