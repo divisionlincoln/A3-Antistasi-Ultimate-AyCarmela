@@ -86,6 +86,10 @@ DECLARE_SERVER_VAR(haveRadio, false);
 server setVariable ["hr",initialHr,true];
 //Initial faction money pool
 server setVariable ["resourcesFIA",initialFactionMoney,true];
+//How many rebel leaders (Petros and his successors) have died so far. Used to cycle through A3A_leaderNames and to trigger final defeat once the roster is exhausted.
+DECLARE_SERVER_VAR(A3A_leaderDeathCount, 0);
+//Ordered roster of rebel leader names. Index 0 (Petros) is the starting leader; each subsequent death in fn_initPetros.sqf's "mpkilled" handler promotes the next name. Death of the last name ends the campaign in defeat.
+DECLARE_SERVER_VAR(A3A_leaderNames, ["Petros", "Cherar", "Fuser", "Shima", "el Fraile"]);
 // Time of last garbage clean. Note: serverTime may not reset to zero if server was not restarted. Therefore, it should capture the time at start of mission.
 DECLARE_SERVER_VAR(A3A_lastGarbageCleanTime, serverTime);
 // Hash map of custom non-member/AI item thresholds
