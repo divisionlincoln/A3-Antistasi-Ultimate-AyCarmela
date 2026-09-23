@@ -32,6 +32,12 @@ private _petrosIdentity = A3A_faction_reb getOrDefault [
 	]
 ];
 
+// Leadership succession: after Petros (index 0) dies, each successor in A3A_leaderNames
+// takes over the name while keeping the faction's configured face/voice/lastName.
+private _leaderNames = server getVariable ["A3A_leaderNames", ["Petros", "Cherar", "Fuser", "Shima", "el Fraile"]];
+private _leaderIndex = (server getVariable ["A3A_leaderDeathCount", 0]) min (count _leaderNames - 1);
+_petrosIdentity set ["firstName", _leaderNames select _leaderIndex];
+
 private _oldPetros = petros;
 petros = [_groupPetros, FactionGet(reb,"unitPetros"), _location, [], _radius, "NONE", _petrosIdentity] call A3A_fnc_createUnit;
 publicVariable "petros";
