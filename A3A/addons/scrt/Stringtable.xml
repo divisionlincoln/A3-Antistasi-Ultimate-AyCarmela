@@ -2071,6 +2071,15 @@
                 <Korean>당신은 모든 역경에 맞서 싸우려고 고군분투했지만 여전히 실패했습니다. GG 수고</Korean>
                 <Turkish>Tüm imkansızlıklara karşı savaşmayı denediniz ama yine de başaramadınız.</Turkish>
             </Key>
+            <Key ID="STR_end_mission_leadership_defeat_title">
+                <Original>L E A D E R S H I P   L O S T</Original>
+            </Key>
+            <Key ID="STR_end_mission_leadership_defeat_subtitle">
+                <Original>There is no one left to lead the rebellion.</Original>
+            </Key>
+            <Key ID="STR_end_mission_leadership_defeat_desc">
+                <Original>Petros and every leader who rose after him have fallen. Without a rebel leader, the resistance collapses.</Original>
+            </Key>
         </Container>
         <Container name="markers">
             <Key ID="STR_qrf_marker_mrap">
